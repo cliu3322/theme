@@ -62,7 +62,7 @@ class ProductListItem extends Component {
                         <div className="img-wrapper">
                             <div className="front">
                                 <Link to={`${process.env.PUBLIC_URL}/left-sidebar/product/${product.id}`} ><img
-                                    src={`http://react.pixelstrap.com/multikart/assets/images/fashion/product/30.jpg`}
+                                    src={`${this.state.image?this.state.image:product.variants[0].images}`}
                                     className="img-fluid"
                                     alt="" /></Link>
                             </div>
@@ -81,10 +81,10 @@ class ProductListItem extends Component {
                                     <i className="fa fa-refresh" aria-hidden="true"></i></Link>
                             </div>
                             <ul className="product-thumb-list">
-                                {product.pic.map((vari, i) =>
-                                    <li className={`grid_thumb_img ${(vari === this.state.image)?'active':''}`} key={i}>
+                                {product.variants.map((vari, i) =>
+                                    <li className={`grid_thumb_img ${(vari.images === this.state.image)?'active':''}`} key={i}>
                                         <a href="javascript:void(0)" title="Add to Wishlist">
-                                            <img src={`${vari}`} onClick={() => this.onClickHandle(vari)} />
+                                            <img src={`${vari.images}`} onClick={() => this.onClickHandle(vari.images)} />
                                         </a>
                                     </li>)
                                 }
@@ -102,6 +102,12 @@ class ProductListItem extends Component {
                                 <p>{product.shortDetails}</p>
                                 <h4>{symbol}{(product.price*product.discount/100)}
                                     <del><span className="money">{symbol}{product.price}</span></del></h4>
+                                <ul className="color-variant">
+                                    {product.variants.map((vari, i) => {
+                                        return (
+                                            <li className={vari.color} key={i} title={vari.color} onClick={() => this.onClickHandle(vari.images)}></li>)
+                                    })}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -112,7 +118,7 @@ class ProductListItem extends Component {
                                         <div className="row">
                                             <div className="col-lg-6  col-xs-12">
                                                 <div className="quick-view-img">
-                                                    <img src={`${this.state.image?this.state.image:product.pic[0]}`} alt="" className="img-fluid" />
+                                                    <img src={`${this.state.image?this.state.image:product.variants[0].images}`} alt="" className="img-fluid" />
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 rtl-text">
@@ -121,12 +127,23 @@ class ProductListItem extends Component {
                                                     <h3>{symbol}{(product.price*product.discount/100)}
                                                         <del><span className="money">{symbol}{product.price}</span></del>
                                                     </h3>
+                                                    <ul className="color-variant">
+                                                        {product.variants.map((vari, i) =>
+                                                            <li className={vari.color} key={i} title={vari.color} onClick={() => this.onClickHandle(vari.images)}></li>)
+                                                        }
+                                                    </ul>
                                                     <div className="border-product">
                                                         <h6 className="product-title">product details</h6>
                                                         <p>{product.shortDetails}</p>
                                                     </div>
                                                     <div className="product-description border-product">
-
+                                                        <div className="size-box">
+                                                            <ul>
+                                                                {product.size.map((size, i) => {
+                                                                    return <li key={i}><a href="#">{size}</a></li>
+                                                                })}
+                                                            </ul>
+                                                        </div>
                                                         <h6 className="product-title">quantity</h6>
                                                         <div className="qty-box">
                                                             <div className="input-group">
