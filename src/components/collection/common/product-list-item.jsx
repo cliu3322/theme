@@ -100,8 +100,7 @@ class ProductListItem extends Component {
                                     <h6>{product.name}</h6>
                                 </Link>
                                 <p>{product.shortDetails}</p>
-                                <h4>{symbol}{(product.price*product.discount/100)}
-                                    <del><span className="money">{symbol}{product.price}</span></del></h4>
+                                <h4>{product.phone}</h4>
                             </div>
                         </div>
                     </div>
@@ -119,7 +118,7 @@ class ProductListItem extends Component {
                                                 <div className="product-right">
                                                     <h2> {product.name} </h2>
                                                     <h3>{symbol}{(product.price*product.discount/100)}
-                                                        <del><span className="money">{symbol}{product.price}</span></del>
+                                                        <del><span className="money">{product.phone}</span></del>
                                                     </h3>
                                                     <div className="border-product">
                                                         <h6 className="product-title">product details</h6>
