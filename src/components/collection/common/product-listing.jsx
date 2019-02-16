@@ -30,6 +30,7 @@ class ProductListing extends Component {
     componentDidMount () {
       SuperFetch.get(`/getcityxrecordlist?id=5bfa2a60200fe764bdf9ec5c`)
         .then((recordlist) => {
+          console.log(recordlist)
           this.setState(() => ({ recordlist }))
         })
     }
