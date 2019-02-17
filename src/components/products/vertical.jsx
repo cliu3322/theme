@@ -109,7 +109,7 @@ class Vertical extends Component {
 const mapStateToProps = (state, ownProps) => {
     let productId = ownProps.match.params.id;
     return {
-        item: state.data.products.find(el => el.id == productId),
+        item: state.data.products.find(el => el.id === productId),
         symbol: state.data.symbol
     }
 }

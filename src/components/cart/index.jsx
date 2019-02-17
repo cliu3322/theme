@@ -9,9 +9,6 @@ import {removeFromCart, incrementQty, decrementQty} from '../../actions'
 
 class cartComponent extends Component {
 
-    constructor (props) {
-        super (props)
-    }
 
     render (){
 

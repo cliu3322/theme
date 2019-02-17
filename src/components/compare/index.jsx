@@ -8,11 +8,6 @@ import {removeFromCompare, addToCart} from '../../actions'
 
 class Compare extends Component {
 
-    constructor (props) {
-        super (props)
-
-    }
-
 
     changeQty = (e) => {
         this.setState({ quantity: parseInt(e.target.value) })
@@ -116,7 +111,7 @@ class Compare extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="btn-part">
-                                                    <a href="javascript:void(0)" className="btn btn-solid" onClick={() => addToCart(item, 1)}>add to cart</a>
+                                                    <a href="http://localhost:3000/" className="btn btn-solid" onClick={() => addToCart(item, 1)}>add to cart</a>
                                                 </div>
                                             </div>
                                         </div>
