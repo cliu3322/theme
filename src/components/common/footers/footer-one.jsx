@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Link} from 'react-router-dom';
 import jQuery from 'jquery';
 
+import Chat from '../../chat/components/App';
+
 class FooterOne extends Component {
 
     constructor(props){
@@ -65,8 +67,9 @@ class FooterOne extends Component {
         });
     }
 
-    showHideColor(){
-        this.setState({colorPick: !this.state.colorPick})
+    showHideColor(e){
+      e.preventDefault();
+      this.setState({colorPick: !this.state.colorPick})
     }
 
     changeColor(color){
@@ -74,7 +77,7 @@ class FooterOne extends Component {
     }
 
     render () {
-        let color_style = this.state.colorPick ? {right:'0px'}: {right:'-190px'};
+        let color_style = this.state.colorPick ? {right:'0px'}: {right:'-390px'};
         let tap_to_top = {display: 'none'}
         return (
             <footer className="footer-light">
@@ -231,23 +234,10 @@ class FooterOne extends Component {
                     <a href="#" className="handle" onClick={this.showHideColor.bind(this)}><i className="fa fa-cog"></i></a>
                     <div className="sec-position">
                         <div className="settings-header">
-                            <h3>Select Color1:</h3>
+                            <h3>We help you:</h3>
                         </div>
                         <div className="section">
-                            <div className="colors o-auto">
-                                <a href="#" className="color1" onClick={() => this.changeColor('color1')}></a>
-                                <a href="#" className="color2" onClick={() => this.changeColor('color2')}></a>
-                                <a href="#" className="color3" onClick={() => this.changeColor('color3')}></a>
-                                <a href="#" className="color4" onClick={() => this.changeColor('color4')}></a>
-                                <a href="#" className="color5" onClick={() => this.changeColor('color5')}></a>
-                                <a href="#" className="color6" onClick={() => this.changeColor('color6')}></a>
-                                <a href="#" className="color7" onClick={() => this.changeColor('color7')}></a>
-                                <a href="#" className="color8" onClick={() => this.changeColor('color8')}></a>
-                                <a href="#" className="color9" onClick={() => this.changeColor('color9')}></a>
-                                <a href="#" className="color10" onClick={() => this.changeColor('color10')}></a>
-                                <a href="#" className="color11" onClick={() => this.changeColor('color11')}></a>
-                                <a href="#" className="color12" onClick={() => this.changeColor('color12')}></a>
-                            </div>
+                            <Chat />
                         </div>
                     </div>
                 </div>

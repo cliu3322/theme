@@ -3946,9 +3946,9 @@ footer{
 }
 .color-picker {
   position: fixed;
-  right: -190px;
+  right: -390px;
   top: 35%;
-  width: 190px;
+  width: 390px;
   z-index: 1;
   transition: all .3s ease;
   .settings-header {
@@ -3975,7 +3975,7 @@ footer{
   a {
     &.handle {
       position: absolute;
-      right: 190px;
+      right: 390px;
       width: 42px;
       height: 41px;
       color: $black;
@@ -8185,8 +8185,3 @@ body.rtl {
     }
   }
 }
-
-
-
-
-
