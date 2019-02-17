@@ -3,7 +3,8 @@ import $ from 'jquery';
 import 'smartmenus';
 import SuperFetch from '../../../../helpers/superFetch';
 
-var array1 = [1, 4, 9, 16];
+require('./sidebar.css');
+
 class SideBar extends Component {
 
 
@@ -40,17 +41,11 @@ class SideBar extends Component {
     }
 
     render() {
-      const {cities} = this.state;
-      if(cities.allcities){
-        console.log(cities.allcities[0])
-        array1.map((state, index) =>
-           console.log(state)
-         )
-        }
+
         return (
             <div id="mySidenav" className="sidenav">
                 <a href="javascript:void(0)" className="sidebar-overlay" onClick={this.closeNav}></a>
-                <nav>
+                <nav className="vertical-menu">
                     <div onClick={this.closeNav}>
                         <div className="sidebar-back text-left">
                             <i className="fa fa-angle-left pr-2" aria-hidden="true"></i> Back
@@ -59,33 +54,43 @@ class SideBar extends Component {
                     {/*Vertical Menu*/}
                     <ul id="sub-menu" className="sm pixelstrap sm-vertical ">
 
-                    {!cities && (
-                      array1.slice(0, 2).map((state, index) =>
-                         <li>{state}
+                    { this.state.cities.allcities?
+                      (
+                      this.state.cities.allcities[0].children.map((state, index) =>
+                         <li key ={index}><a href="#">{state.label}</a>
+                           <ul className="mega-menu clothing-menu">
+                               <li>
+                                   <div className="row m-0">
+                                       <div className="col-xl-4">
+                                           <div className="link-section">
+                                               <h5>{state.label}</h5>
+                                               <ul>
+                                                   <li><a href="#">fashion jewellery</a></li>
+                                                   <li><a href="#">caps and hats</a></li>
+                                                   <li><a href="#">precious jewellery</a></li>
+                                                   <li><a href="#">necklaces</a></li>
+                                                   <li><a href="#">earrings</a></li>
+                                                   <li><a href="#">wrist wear</a></li>
+                                                   <li><a href="#">ties</a></li>
+                                                   <li><a href="#">cufflinks</a></li>
+                                                   <li><a href="#">pockets squares</a></li>
+                                               </ul>
+                                           </div>
+                                       </div>
+                                       <div className="col-xl-4">
+                                           <a href="#" className="mega-menu-banner"><img
+                                               src={`${process.env.PUBLIC_URL}/assets/images/mega-menu/fashion.jpg`} alt=""
+                                               className="img-fluid"/></a>
+                                       </div>
+                                   </div>
+                               </li>
+                           </ul>
                          </li>)
-                    )}
+                    ):null}
                         <li><a href="#">clothing1111</a>
                             <ul className="mega-menu clothing-menu">
                                 <li>
                                     <div className="row m-0">
-                                        <div className="col-xl-4">
-                                            <div className="link-section">
-                                                <h5>women's fashion</h5>
-                                                <ul>
-                                                    <li><a href="#">dresses</a></li>
-                                                    <li><a href="#">skirts</a></li>
-                                                    <li><a href="#">westarn wear</a></li>
-                                                    <li><a href="#">ethic wear</a></li>
-                                                    <li><a href="#">sport wear</a></li>
-                                                </ul>
-                                                <h5>men's fashion</h5>
-                                                <ul>
-                                                    <li><a href="#">sports wear</a></li>
-                                                    <li><a href="#">western wear</a></li>
-                                                    <li><a href="#">ethic wear</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                         <div className="col-xl-4">
                                             <div className="link-section">
                                                 <h5>accessories</h5>
