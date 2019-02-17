@@ -1,8 +1,20 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 import 'smartmenus';
+import SuperFetch from '../../../../helpers/superFetch';
 
+var array1 = [1, 4, 9, 16];
 class SideBar extends Component {
+
+
+  constructor (props) {
+      super (props)
+
+      this.state = {
+        cities:[]
+      };
+
+  }
 
     componentWillMount (){
         $(function() {
@@ -13,6 +25,14 @@ class SideBar extends Component {
         });
     }
 
+
+    componentDidMount () {
+      SuperFetch.get(`/getCXGCities`)
+        .then((cities) => {
+          this.setState(() => ({ cities }))
+        })
+    }
+
     closeNav() {
         var closemyslide = document.getElementById("mySidenav");
         if(closemyslide)
@@ -20,6 +40,13 @@ class SideBar extends Component {
     }
 
     render() {
+      const {cities} = this.state;
+      if(cities.allcities){
+        console.log(cities.allcities[0])
+        array1.map((state, index) =>
+           console.log(state)
+         )
+        }
         return (
             <div id="mySidenav" className="sidenav">
                 <a href="javascript:void(0)" className="sidebar-overlay" onClick={this.closeNav}></a>
@@ -31,7 +58,13 @@ class SideBar extends Component {
                     </div>
                     {/*Vertical Menu*/}
                     <ul id="sub-menu" className="sm pixelstrap sm-vertical ">
-                        <li><a href="#">clothing</a>
+
+                    {!cities && (
+                      array1.slice(0, 2).map((state, index) =>
+                         <li>{state}
+                         </li>)
+                    )}
+                        <li><a href="#">clothing1111</a>
                             <ul className="mega-menu clothing-menu">
                                 <li>
                                     <div className="row m-0">
