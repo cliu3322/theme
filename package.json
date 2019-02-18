@@ -2,7 +2,7 @@
   "name": "react-multicart",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://localhost:5000",
+  "homepage": "http://172.104.68.53:5000",
   "basename": "/",
   "dependencies": {
     "@babel/core": "7.1.0",
