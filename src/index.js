@@ -75,7 +75,7 @@ class Root extends React.Component {
 								{/*Routes For Features (Product Collection) */}
 								<Route path={`${process.env.PUBLIC_URL}/left-sidebar/collection`} component={CollectionLeftSidebar}/>
 								<Route path={`${process.env.PUBLIC_URL}/no-sidebar/collection`} component={CollectionNoSidebar}/>
-								<Route path={`${process.env.PUBLIC_URL}/right-sidebar/collection`} component={CollectionRightSidebar}/>
+								<Route path={`${process.env.PUBLIC_URL}/right-sidebar/collection/:id`} component={CollectionRightSidebar}/>
 
 								{/*Routes For Single Product*/}
 								<Route path={`${process.env.PUBLIC_URL}/left-sidebar/product/:id`} component={LeftSideBar}/>
@@ -88,7 +88,7 @@ class Root extends React.Component {
 								<Route path={`${process.env.PUBLIC_URL}/left-image/product/:id`} component={LeftImage}/>
 								<Route path={`${process.env.PUBLIC_URL}/right-image/product/:id`} component={RightImage}/>
 								<Route path={`${process.env.PUBLIC_URL}/vertical/product/:id`} component={Vertical}/>
-								
+
 
 								{/*Routes For custom Features*/}
 								<Route path={`${process.env.PUBLIC_URL}/cart`} component={Cart}/>
@@ -127,5 +127,3 @@ class Root extends React.Component {
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-
-

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 import Breadcrumb from "../common/breadcrumb";
 import NewProduct from "../common/new-product";
 import Filter from "./common/filter";
@@ -54,7 +55,7 @@ class CollectionRightSidebar extends Component {
                                                         </div>
 
                                                         {/*Products Listing Component*/}
-                                                        <ProductListing/>
+                                                        <ProductListing {...this.props}/>
 
                                                     </div>
                                                 </div>
@@ -87,4 +88,9 @@ class CollectionRightSidebar extends Component {
     }
 }
 
-export default CollectionRightSidebar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+    }
+}
+
+export default connect(mapStateToProps, {}) (CollectionRightSidebar);

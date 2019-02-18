@@ -12,8 +12,8 @@ import SuperFetch from '../../../helpers/superFetch';
 
 class ProductListing extends Component {
 
-    constructor (props) {
-        super (props)
+    constructor () {
+        super ()
 
         this.state = {
           limit: 5,
@@ -28,9 +28,9 @@ class ProductListing extends Component {
     }
 
     componentDidMount () {
-      SuperFetch.get(`/getcityxrecordlist?id=5bfa2a60200fe764bdf9ec5c`)
+      let locationid = this.props.match.params.id;
+      SuperFetch.get(`/getcityxrecordlist?id=`+locationid)
         .then((recordlist) => {
-          console.log(recordlist)
           this.setState(() => ({ recordlist }))
         })
     }
@@ -53,7 +53,6 @@ class ProductListing extends Component {
     render (){
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
         const {recordlist} = this.state;
-        console.log(this.state.recordlist)
         return (
             <div>
                 <div className="product-wrapper-grid">
@@ -96,14 +95,13 @@ class ProductListing extends Component {
     }
 }
 
-
-function mapStateToProps(state) {
-  console.log(state)
-  return {
-    products: getVisibleproducts(state.data, state.filters),
-    symbol: state.data.symbol,
-  };
+const mapStateToProps = (state, ownProps) => {
+    return {
+      products: getVisibleproducts(state.data, state.filters),
+      symbol: state.data.symbol,
+    }
 }
+
 
 
 export default connect(

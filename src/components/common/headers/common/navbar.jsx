@@ -3,13 +3,15 @@ import {Link} from 'react-router-dom';
 import $ from 'jquery';
 import 'smartmenus';
 import { withTranslate } from 'react-redux-multilingual'
+import SuperFetch from '../../../../helpers/superFetch';
 
 class NavBar extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            navClose:{right:'0px'}
+            navClose:{right:'0px'},
+            cities:[]
         }
     }
 
@@ -27,6 +29,13 @@ class NavBar extends Component {
         {
             this.setState({navClose: {right:'-300px'}})
         }
+    }
+
+    componentDidMount () {
+      SuperFetch.get(`/getCXGCities`)
+        .then((cities) => {
+          this.setState(() => ({ cities }))
+        })
     }
 
     openNav() {
@@ -173,86 +182,30 @@ class NavBar extends Component {
                                 <li><Link to={`${process.env.PUBLIC_URL}/pages/faq`} >{translate('FAQ')}</Link></li>
                             </ul>
                         </li>
-                        <li className="mega"><a href="#">{translate('shop')}</a>
+                        <li className="mega"><a href="#">{'Choose your city'}</a>
                             <ul className="mega-menu full-mega-menu">
                                 <li>
                                     <div className="container">
                                         <div className="row">
-                                            <div className="col mega-box">
-                                                <div className="link-section">
-                                                    <div className="menu-title"><h5>{translate('mens_fashion')}</h5></div>
-                                                    <div className="menu-content">
-                                                        <ul>
-                                                            <li><a href="#">{translate('sports_wear')}</a></li>
-                                                            <li><a href="#">{translate('top')}</a></li>
-                                                            <li><a href="#">{translate('bottom')}</a></li>
-                                                            <li><a href="#">{translate('ethic_wear')}</a></li>
-                                                            <li><a href="#">{translate('sports_wear')}</a></li>
-                                                            <li><a href="#">{translate('shirts')}</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col mega-box">
-                                                <div className="link-section">
-                                                    <div className="menu-title"><h5>{translate('women_fashion')}</h5></div>
-                                                    <div className="menu-content">
-                                                        <ul>
-                                                            <li><a href="#">{translate('dresses')}</a></li>
-                                                            <li><a href="#">{translate('skirts')}</a></li>
-                                                            <li><a href="#">{translate('westarn_wear')}</a></li>
-                                                            <li><a href="#">{translate('ethnic_wear')}</a></li>
-                                                            <li><a href="#">{translate('sport_wear')}</a></li>
-                                                            <li><a href="#">{translate('bottom_wear')}</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col mega-box">
-                                                <div className="link-section">
-                                                    <div className="menu-title"><h5>{translate('kids_fashion')}</h5></div>
-                                                    <div className="menu-content">
-                                                        <ul>
-                                                            <li><a href="#">{translate('sport_wear')}</a></li>
-                                                            <li><a href="#">{translate('ethnic_wear')}</a></li>
-                                                            <li><a href="#">{translate('sport_wear')}</a></li>
-                                                            <li><a href="#">{translate('top')}</a></li>
-                                                            <li><a href="#">{translate('bottom_wear')}</a></li>
-                                                            <li><a href="#">{translate('ethnic_wear')}</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col mega-box">
-                                                <div className="link-section">
-                                                    <div className="menu-title"><h5>{translate('accessories')}</h5></div>
-                                                    <div className="menu-content">
-                                                        <ul>
-                                                            <li><a href="#">{translate('fashion_jewellery')}</a></li>
-                                                            <li><a href="#">{translate('caps_and_hats')}</a></li>
-                                                            <li><a href="#">{translate('precious_jewellery')}</a></li>
-                                                            <li><a href="#">{translate('necklaces')}</a></li>
-                                                            <li><a href="#">{translate('earrings')}</a></li>
-                                                            <li><a href="#">{translate('rings_wrist_wear')}</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col mega-box">
-                                                <div className="link-section">
-                                                    <div className="menu-title"><h5>{translate('men_accessories')}</h5></div>
-                                                    <div className="menu-content">
-                                                        <ul>
-                                                            <li><a href="#">{translate('ties')}</a></li>
-                                                            <li><a href="#">{translate('cufflinks')}</a></li>
-                                                            <li><a href="#">{translate('pockets_squares')}</a></li>
-                                                            <li><a href="#">{translate('helmets')}</a></li>
-                                                            <li><a href="#">{translate('scarves')}</a></li>
-                                                            <li><a href="#">{translate('phone_cases')}</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                        { this.state.cities.allcities?
+                                          (
+                                          this.state.cities.allcities[0].children.map((state, index) =>
+                                          <div className="col mega-box" key = {index}>
+                                              <div className="link-section">
+                                                  <div className="menu-title"><h5>{state.label}</h5></div>
+                                                  <div className="menu-content">
+                                                      <ul>
+                                                        {state.children.map((city, index) =>
+                                                          <li key = {city.value}>
+                                                            <Link to={"/right-sidebar/collection/"+city.value}>{city.label}</Link>
+                                                          </li>
+                                                        )}
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>)
+                                        ):null}
                                         </div>
                                     </div>
                                     <div className="row banner-padding">
