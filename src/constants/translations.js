@@ -76,7 +76,7 @@ var module = {
     en: {
         locale: 'en_US',
         messages: {
-            topbar_title: 'Welcome to Our store Multikart',
+            topbar_title: 'Welcome to Our Escort Multikart',
             call_us: 'Call Us',
             home: 'home',
             features: 'features',
