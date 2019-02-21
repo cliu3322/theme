@@ -11,6 +11,7 @@ import SpecialProducts from "./products";
 import BlogSection from "./blogsection";
 import Instagram from "./instagram";
 import Map from "../../map";
+import News from "../../news";
 
 
 
@@ -105,9 +106,7 @@ class Fashion extends Component {
                         <div className="row partition2">
                             <div className="col-md-6">
 															<div>
-																	<h4>MAP</h4>
-																	<h1>MAP</h1>
-																	<Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">shop now</Link>
+																	<News />
 															</div>
                             </div>
                             <div className="col-md-6">
