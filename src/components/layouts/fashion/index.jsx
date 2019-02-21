@@ -3,13 +3,16 @@ import '../../common/index.scss';
 import Slider from 'react-slick';
 import {Link} from 'react-router-dom';
 
+
 // Import custom components
-import HeaderOne from '../../common/headers/header-one'
+
 import TopCollection from './collection';
 import SpecialProducts from "./products";
 import BlogSection from "./blogsection";
 import Instagram from "./instagram";
-import FooterOne from "../../common/footers/footer-one";
+import Map from "../../map";
+
+
 
 class Fashion extends Component {
 
@@ -53,49 +56,6 @@ class Fashion extends Component {
             '                                            d="m394.199219 7.414062-10.363281 38.640626c-1.429688 5.335937 1.734374 10.816406 7.070312 12.25 5.332031 1.425781 10.816406-1.730469 12.25-7.070313l10.359375-38.640625c1.429687-5.335938-1.734375-10.820312-7.070313-12.25-5.332031-1.429688-10.816406 1.734375-12.246093 7.070312zm0 0"\n' +
             '                                            fill="#ff4c3b"/>\n' +
             '                                    </svg>';
-
-            var slidesix = {
-                dots: false,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 6,
-                slidesToScroll: 6,
-                responsive: [
-                    {
-                        breakpoint: 1367,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5,
-                            infinite: true
-                        }
-                    },
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
-                            infinite: true
-                        }
-                    },
-                    {
-                        breakpoint: 767,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            infinite: true
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    }
-
-                ]
-            }
-
 		return (
 			<div>
                 {/*Home Slider*/}
@@ -108,9 +68,9 @@ class Fashion extends Component {
                                         <div className="col">
                                             <div className="slider-contain">
                                                 <div>
-                                                    <h4>welcome to fashion</h4>
-                                                    <h1>men fashion</h1>
-                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">shop now</Link>
+                                                    <h4>welcome to our Beta version</h4>
+                                                    <h1>Track website</h1>
+                                                    <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">Click here</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,17 +104,11 @@ class Fashion extends Component {
                     <div className="container">
                         <div className="row partition2">
                             <div className="col-md-6">
-                                <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
-                                    <div className="collection-banner p-right text-center">
-                                        <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner1.jpg`} className="img-fluid" alt=""/>
-                                            <div className="contain-banner">
-                                                <div>
-                                                    <h4>save 30%</h4>
-                                                    <h2>men</h2>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </Link>
+															<div>
+																	<h4>MAP</h4>
+																	<h1>MAP</h1>
+																	<Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`} className="btn btn-solid">shop now</Link>
+															</div>
                             </div>
                             <div className="col-md-6">
                                 <Link to={`${process.env.PUBLIC_URL}/left-sidebar/collection`}>
@@ -162,8 +116,8 @@ class Fashion extends Component {
                                         <img src={`${process.env.PUBLIC_URL}/assets/images/sub-banner2.jpg`} className="img-fluid" alt=""/>
                                             <div className="contain-banner">
                                                 <div>
-                                                    <h4>save 60%</h4>
-                                                    <h2>women</h2>
+                                                    <h4>ニュズ弹幕</h4>
+                                                    <h2>ニュズ弹幕</h2>
                                                 </div>
                                             </div>
                                     </div>
@@ -183,9 +137,9 @@ class Fashion extends Component {
                             <div className="row">
                                 <div className="col">
                                     <div className="banner-contain">
-                                        <h2>2018</h2>
-                                        <h3>fashion trends</h3>
-                                        <h4>special offer</h4>
+                                        <h2>2019</h2>
+                                        <h3>Register</h3>
+                                        <h4>special offer!</h4>
                                     </div>
                                 </div>
                             </div>
@@ -235,76 +189,6 @@ class Fashion extends Component {
                 <BlogSection />
 
                 <Instagram />
-
-                {/*logo section*/}
-                <section className="section-b-space">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <Slider {...slidesix} className="slide-6 no-arrow">
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/1.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/2.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/3.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/4.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/5.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/6.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/7.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="logo-block">
-                                            <a href={null}>
-                                                <img src={`${process.env.PUBLIC_URL}/assets/images/logos/8.png`} alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </Slider>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {/*logo section end*/}
-
 			</div>
 			)
 

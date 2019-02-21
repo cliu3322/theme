@@ -234,7 +234,7 @@ class FooterOne extends Component {
                     <a href="#" className="handle" onClick={this.showHideColor.bind(this)}><img src={`${process.env.PUBLIC_URL}/yuki.gif`}alt="Smiley face" height="100%" width="100%"/></a>
                     <div className="sec-position">
                         <div className="settings-header">
-                            <h3>Talk with our Agent:</h3>
+                            <h3>Talk with local agent:</h3>
                         </div>
                         <div className="section">
                             <Chat />
