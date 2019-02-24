@@ -17,9 +17,7 @@ class News extends Component {
     }
 
     this.socket = io(config.newsSocketport).connect();
-
     this.socket.on('news', message => {
-      console.log(message)
       this.addMessage(message);
     });
   }
@@ -33,7 +31,7 @@ class News extends Component {
 
   render() {
     return (
-      <div className='message-body'>
+      <div className='news-message-body'>
         { this.state.messages }
       </div>
 

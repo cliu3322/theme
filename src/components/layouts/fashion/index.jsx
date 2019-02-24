@@ -10,7 +10,7 @@ import TopCollection from './collection';
 import SpecialProducts from "./products";
 import BlogSection from "./blogsection";
 import Instagram from "./instagram";
-import Map from "../../map";
+
 import News from "../../news";
 
 

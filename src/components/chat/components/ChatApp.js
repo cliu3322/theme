@@ -1,6 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
-import config from '../config';
+import config from '../../../helpers/config';
 
 import Messages from './Messages';
 import ChatInput from './ChatInput';
@@ -19,11 +19,11 @@ class ChatApp extends React.Component {
   socket = {};
   constructor(props) {
     super(props);
+
     this.state = { messages: [] };
     this.sendHandler = this.sendHandler.bind(this);
 
-    // Connect to the server
-    this.socket = io(config.api, { query: `username=${props.username}` }).connect();
+    this.socket = io(config.socketport, { query: `username=${props.username}` }).connect();
 
     // Listen for messages from the server
     this.socket.on('server:message', message => {
@@ -38,6 +38,7 @@ class ChatApp extends React.Component {
     };
 
     // Emit the message to the server
+    console.log('messageObject', messageObject)
     this.socket.emit('client:message', messageObject);
 
     messageObject.fromMe = true;
