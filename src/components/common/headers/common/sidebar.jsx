@@ -3,7 +3,6 @@ import $ from 'jquery';
 import 'smartmenus';
 import SuperFetch from '../../../../helpers/superFetch';
 
-require('./sidebar.css');
 
 class SideBar extends Component {
 
@@ -22,6 +21,7 @@ class SideBar extends Component {
             $('#sub-menu').smartmenus({
                 subMenusSubOffsetX: 1,
                 subMenusSubOffsetY: -8
+
             });
         });
     }
@@ -41,9 +41,9 @@ class SideBar extends Component {
     }
 
     render() {
-
+      console.log(this.state.cities.allcities)
         return (
-            <div id="mySidenav" className="sidenav">
+            <div id="mySidenav" className="sidenav" style={{height:'100hv',overflowY: 'scroll'}}>
                 <a href="javascript:void(0)" className="sidebar-overlay" onClick={this.closeNav}></a>
                 <nav className="vertical-menu">
                     <div onClick={this.closeNav}>
@@ -52,148 +52,35 @@ class SideBar extends Component {
                         </div>
                     </div>
                     {/*Vertical Menu*/}
-                    <ul id="sub-menu" className="sm pixelstrap sm-vertical ">
+                    <ul id="sub-menu" className="sm sm-vertical ">
 
                     { this.state.cities.allcities?
                       (
-                      this.state.cities.allcities[0].children.map((state, index) =>
-                         <li key ={index}><a href="#">{state.label}</a>
-                           <ul className="mega-menu clothing-menu">
-                               <li>
-                                   <div className="row m-0">
-                                       <div className="col-xl-4">
-                                           <div className="link-section">
-                                               <h5>{state.label}</h5>
-                                               <ul>
-                                                   <li><a href="#">fashion jewellery</a></li>
-                                                   <li><a href="#">caps and hats</a></li>
-                                                   <li><a href="#">precious jewellery</a></li>
-                                                   <li><a href="#">necklaces</a></li>
-                                                   <li><a href="#">earrings</a></li>
-                                                   <li><a href="#">wrist wear</a></li>
-                                                   <li><a href="#">ties</a></li>
-                                                   <li><a href="#">cufflinks</a></li>
-                                                   <li><a href="#">pockets squares</a></li>
-                                               </ul>
-                                           </div>
-                                       </div>
-                                       <div className="col-xl-4">
-                                           <a href="#" className="mega-menu-banner"><img
-                                               src={`${process.env.PUBLIC_URL}/assets/images/mega-menu/fashion.jpg`} alt=""
-                                               className="img-fluid"/></a>
-                                       </div>
-                                   </div>
-                               </li>
+                      this.state.cities.allcities[0].children.map((state, index1) =>
+                         <li key ={index1}><a href="#" style={{
+                           paddingLeft: '20px',
+                           color: '#222222',
+                           fontSize: '16px',
+                           fontWeight: '400',
+                           textDecoration: 'none',
+                           textTransform: 'uppercase',
+                           paddingTop: '2px',
+                           paddingBottom: '2px',
+                           letterSpacing: '0.07em'
+                         }}>{state.label}</a>
+                           <ul>
+                           {state.children.map((city, index2) =>
+                             <li key = {index2}><a href="#" style={{
+                               paddingLeft: '30px',
+                               color: '#222222',
+                               fontSize: '12px',
+                               fontWeight: '300',
+                             }}>{city.label}</a></li>
+                           )}
                            </ul>
                          </li>)
                     ):null}
-                        <li><a href="#">clothing1111</a>
-                            <ul className="mega-menu clothing-menu">
-                                <li>
-                                    <div className="row m-0">
-                                        <div className="col-xl-4">
-                                            <div className="link-section">
-                                                <h5>accessories</h5>
-                                                <ul>
-                                                    <li><a href="#">fashion jewellery</a></li>
-                                                    <li><a href="#">caps and hats</a></li>
-                                                    <li><a href="#">precious jewellery</a></li>
-                                                    <li><a href="#">necklaces</a></li>
-                                                    <li><a href="#">earrings</a></li>
-                                                    <li><a href="#">wrist wear</a></li>
-                                                    <li><a href="#">ties</a></li>
-                                                    <li><a href="#">cufflinks</a></li>
-                                                    <li><a href="#">pockets squares</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-4">
-                                            <a href="#" className="mega-menu-banner"><img
-                                                src={`${process.env.PUBLIC_URL}/assets/images/mega-menu/fashion.jpg`} alt=""
-                                                className="img-fluid"/></a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">bags</a>
-                            <ul>
-                                <li><a href="#">shopper bags</a></li>
-                                <li><a href="#">laptop bags</a></li>
-                                <li><a href="#">clutches</a></li>
-                                <li><a href="#">purses</a>
-                                    <ul>
-                                        <li><a href="#">purses</a></li>
-                                        <li><a href="#">wallets</a></li>
-                                        <li><a href="#">leathers</a></li>
-                                        <li><a href="#">satchels</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">footwear</a>
-                            <ul>
-                                <li><a href="#">sport shoes</a></li>
-                                <li><a href="#">formal shoes</a></li>
-                                <li><a href="#">casual shoes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">watches</a>
-                        </li>
-                        <li><a href="#">Accessories</a>
-                            <ul>
-                                <li><a href="#">fashion jewellery</a></li>
-                                <li><a href="#">caps and hats</a></li>
-                                <li><a href="#">precious jewellery</a></li>
-                                <li><a href="#">more..</a>
-                                    <ul>
-                                        <li><a href="#">necklaces</a></li>
-                                        <li><a href="#">earrings</a></li>
-                                        <li><a href="#">wrist wear</a></li>
-                                        <li><a href="#">accessories</a>
-                                            <ul>
-                                                <li><a href="#">ties</a></li>
-                                                <li><a href="#">cufflinks</a></li>
-                                                <li><a href="#">pockets squares</a></li>
-                                                <li><a href="#">helmets</a></li>
-                                                <li><a href="#">scarves</a></li>
-                                                <li><a href="#">more...</a>
-                                                    <ul>
-                                                        <li><a href="#">accessory gift sets</a></li>
-                                                        <li><a href="#">travel accessories</a></li>
-                                                        <li><a href="#">phone cases</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">belts & more</a></li>
-                                        <li><a href="#">wearable</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">house of design</a>
-                        </li>
 
-                        <li><a href="#">beauty & personal care</a>
-                            <ul>
-                                <li><a href="#">makeup</a></li>
-                                <li><a href="#">skincare</a></li>
-                                <li><a href="#">premium beaty</a></li>
-                                <li><a href="#">more</a>
-                                    <ul>
-                                        <li><a href="#">fragrances</a></li>
-                                        <li><a href="#">luxury beauty</a></li>
-                                        <li><a href="#">hair care</a></li>
-                                        <li><a href="#">tools & brushes</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#">home & decor</a>
-                        </li>
-                        <li><a href="#">kitchen</a>
-                        </li>
                     </ul>
                 </nav>
             </div>
