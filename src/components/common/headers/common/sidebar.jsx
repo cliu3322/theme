@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import 'smartmenus';
 import SuperFetch from '../../../../helpers/superFetch';
+import {Link} from 'react-router-dom';
 
 
 class SideBar extends Component {
@@ -57,7 +58,7 @@ class SideBar extends Component {
                     { this.state.cities.allcities?
                       (
                       this.state.cities.allcities[0].children.map((state, index1) =>
-                         <li key ={index1}><a href="#" style={{
+                         <li key ={index1}><a style={{
                            paddingLeft: '20px',
                            color: '#222222',
                            fontSize: '16px',
@@ -70,12 +71,16 @@ class SideBar extends Component {
                          }}>{state.label}</a>
                            <ul>
                            {state.children.map((city, index2) =>
-                             <li key = {index2}><a href="#" style={{
-                               paddingLeft: '30px',
-                               color: '#222222',
-                               fontSize: '12px',
-                               fontWeight: '300',
-                             }}>{city.label}</a></li>
+                             <li key = {index2}>
+                               <a href={`${process.env.PUBLIC_URL}/right-sidebar/collection/${city.value}`} style={{
+                                 paddingLeft: '30px',
+                                 color: '#222222',
+                                 fontSize: '12px',
+                                 fontWeight: '300',
+                               }}>
+                                 {city.label}
+                                </a>
+                              </li>
                            )}
                            </ul>
                          </li>)
